@@ -1,4 +1,4 @@
-class MyLinkedList {
+class LinkedListDesign {
     
     class Node{
         int val;
