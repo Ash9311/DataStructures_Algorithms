@@ -11,13 +11,26 @@ public class StackAsLinkedList{
         }
     }
 
-    public bool isEmpty(){
+    public boolean isEmpty(){
         if(root==null){
             return true;
         }
         else{
             return false;
         }
+    }
+
+    public void push(int data){
+        StackNode newNode = new StackNode(data);
+        if(root==null){
+            root = newNode;
+        }
+        else{
+            StackNode temp = root;
+            root = newNode;
+            newNode.next = temp;
+        }
+        System.out.println(data+" is pushed to the stack");
     }
 
     public int pop(){
@@ -44,10 +57,8 @@ public class StackAsLinkedList{
         StackAsLinkedList sll = new StackAsLinkedList();
         sll.push(9);
         sll.push(4);
-        skk.push(8);
+        sll.push(8);
         System.out.println(sll.pop()+" is popped from stack");
         System.out.println(sll.peek()+" is the top element");
     }
-
-
 }
