@@ -1,4 +1,7 @@
-class Solution {
+#include <bits/stdc++.h>
+using namespace std;
+class ParentheseBalance {
+    
 public:
     bool isValid(string s) {
         stack<int> st;
@@ -42,4 +45,12 @@ public:
             }
     return ans;
     }
+
+    
 };
+
+int main(){
+        ParentheseBalance obj;
+        bool ans = obj.isValid("{}");
+        std::cout << ans << std::endl;
+    }
