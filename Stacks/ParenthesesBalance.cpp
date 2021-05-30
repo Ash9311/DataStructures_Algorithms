@@ -53,4 +53,8 @@ int main(){
         ParentheseBalance obj;
         bool ans = obj.isValid("{}");
         std::cout << ans << std::endl;
+<<<<<<< HEAD
     }
+=======
+    }
+>>>>>>> origin/IP

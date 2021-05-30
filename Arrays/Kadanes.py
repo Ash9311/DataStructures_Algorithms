@@ -11,6 +11,7 @@ def maxSumSubArray(a):
             curr=0
     return maxx
 
+
 a= [1,-2,2,-3,44,-1,41]
 print(maxSumSubArray(a))
 
