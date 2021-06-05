@@ -3,6 +3,7 @@ using namespace std;
 class ParentheseBalance {
     
 public:
+    
     bool isValid(string s) {
         stack<int> st;
         int n = s.size();
