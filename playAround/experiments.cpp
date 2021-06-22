@@ -20,3 +20,15 @@ class Solution:
       
       return ans;  
     }
+------------------------------------------------------------------------------
+    
+    //replacing num
+    
+    class Solution:
+    def maximum12Number (self, num: int) -> int:
+        return int(str(num).replace('1','2',1))
+            
+            public int maximum69Number (int num) {
+        return Integer.parseInt(("" + num).replaceFirst("1", "2"));
+    }
+--------------------------------------------------------------------
