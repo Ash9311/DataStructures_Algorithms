@@ -10,5 +10,15 @@ int main(){
     for(auto it : v){
         cout<<it;
     }
+    
+    
+   // check whether element present  in  a vector
+    v = {2,3,4};
+
+  if (std::find(v.begin(), v.end(),3)!=v.end()) { // it's not possible now, but how?
+    std::cout << "yo" << std::endl;
+  }
+    
+    
     return 0;
 }
