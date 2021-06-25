@@ -101,3 +101,17 @@ public class Main{
 		System.out.println("Most frequent word: "+ maxStr);
 		System.out.println("Count: "+ maxVal); 
 	}
+----------------------------------------------------------------------------------------------
+	
+	class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        t = iter(t)
+        return all(i in t for i in s)
+		
+	def isSubsequence(self, s, t):
+    remainder_of_t = iter(t)
+    for letter in s:
+        if letter not in remainder_of_t:
+            return False
+    return True
+-----------------------------------------------------------------------
