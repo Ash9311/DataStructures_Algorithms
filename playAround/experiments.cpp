@@ -59,3 +59,45 @@ public class Main{
         m.permutation("ashu");
     }
 }
+
+-------------------------------------------------------------------------
+    
+    public static void FrequentWord(String array[]) 
+	{ 
+		// Insert all unique strings and update count if a string is not unique.
+		Map<String,Integer> hshmap = new HashMap<String, Integer>(); 
+		for (String str : array) 
+		{ 
+			if (hshmap.keySet().contains(str)) // if already exists then update count. 
+				hshmap.put(str, hshmap.get(str) + 1); 
+			else
+				hshmap.put(str, 1); // else insert it in the map.
+		} 
+    	// Traverse the map for the maximum value.
+		String maxStr = ""; 
+    	int maxVal = 0; 
+		for (Map.Entry<String,Integer> entry : hshmap.entrySet()) 
+		{ 
+			String key = entry.getKey(); 
+			Integer count = entry.getValue(); 
+			if (count > maxVal) 
+			{ 
+				maxVal = count; 
+				maxStr = key+" "; 
+			} 
+			
+			else if (count == maxVal) 
+			{ 
+				maxVal = count; 
+				maxStr += key+" "; 
+			} 
+			
+      		// Condition for the tie.
+			else if (count == maxVal){ 
+				if (key.length() < maxStr.length())
+					maxStr = key; 
+			}
+		} 
+		System.out.println("Most frequent word: "+ maxStr);
+		System.out.println("Count: "+ maxVal); 
+	}
