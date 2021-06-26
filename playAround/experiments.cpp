@@ -115,3 +115,6 @@ public class Main{
             return False
     return True
 -----------------------------------------------------------------------
+
+nt best = Arrays.stream(b).min().getAsInt();
+        int worst = Arrays.stream(b).max().getAsInt();
