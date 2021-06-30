@@ -25,7 +25,7 @@ public:
             TreeNode* node = q.front();
             q.pop();
             
-            if(node==NULL){
+            if(node==NULL){  //we get to know that current level is done
             v.push_back(sub);
             sub.clear();
                    
