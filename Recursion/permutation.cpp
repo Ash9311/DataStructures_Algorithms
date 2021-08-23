@@ -11,6 +11,7 @@ void getPermutation(string str, int index){
     for(int i=index;i<str.length();i++){
         swap(str[index],str[i]);
         getPermutation(str,index+1);
+        //backtrack
         swap(str[index],str[i]);
     }
     
