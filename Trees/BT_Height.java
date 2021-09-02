@@ -42,3 +42,21 @@ class Solution {
 //         }
 //     }
 // }
+
+// class Solution {
+//     int height(Node node) {
+//         // code here 
+//         if(node==null){
+//             return 0;
+//         }
+//         int l_depth=1+height(node.left);
+//         int r_depth=1+height(node.right);
+        
+//         if(l_depth>r_depth){
+//             return l_depth;
+//         }
+//         else{
+//             return r_depth;
+//         }
+//     }
+// }
