@@ -15,15 +15,46 @@ class Solution {
            return 0;
        }
        
-        int rootMain = (height(root.left) + height(root.right))+1;
+       int leftSubtree = height(root.left);
+       int rightSubtree = height(root.right);
+       
+       int leftDiameter = diameter(root.left);
+       int rightDiameter = diameter(root.right);
+       
+       return Math.max(leftSubtree+rightSubtree+1,Math.max(leftDiameter,rightDiameter));
+       //find max diameter for tree with main root and without
+       
         
-        int leftSide = diameter(root.left);
-        int rightSide = diameter(root.right);
-        
-        
-        return Math.max(rootMain,Math.max(leftSide,rightSide));
     }
 }
+
+
+// class Solution {
+
+//     int height(Node root){
+      
+//         if(root==null){
+//             return 0;
+//         }
+       
+//         return 1+ Math.max(height(root.left),height(root.right));
+//     }
+    
+//     int diameter(Node root) {
+//         // Your code here
+//        if(root==null){
+//            return 0;
+//        }
+       
+//         int rootMain = (height(root.left) + height(root.right))+1;
+        
+//         int leftSide = diameter(root.left);
+//         int rightSide = diameter(root.right);
+        
+        
+//         return Math.max(rootMain,Math.max(leftSide,rightSide));
+//     }
+// }
 
 
 // class Solution {
