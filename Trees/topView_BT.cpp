@@ -10,7 +10,7 @@ class Solution
         if(root==NULL){
             return;
         }
-        if(m.find(distance)==m.end() || m[distance].first>level){ //map doesnt contain distance
+        if(m.find(distance)==m.end() || m[distance].first>level){ //map doesnt contain distance or has same distance and the current level is lesser than the earlier visited node. 
             m[distance].first = level;
             m[distance].second = root->data;
         
