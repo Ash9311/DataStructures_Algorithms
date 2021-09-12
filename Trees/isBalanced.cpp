@@ -23,7 +23,7 @@ class Tree
 	}
 	int left = height(root.left);
 	int right = height(root.right);
-	return Math.abs(left-right)<2 && isBalanced(root.left) && isBalanced(root.right);
+	return Math.abs(left-right)<2 && isBalanced(root.left) && isBalanced(root.right); //said to be balanced if difference if right and left subtree is not greater than 1
     }
     
     int height(Node root){
