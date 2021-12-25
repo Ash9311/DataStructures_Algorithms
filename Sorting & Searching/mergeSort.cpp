@@ -18,13 +18,14 @@ public:
             }
             
             while(i<=mid){
-                temp.push_back(arr[i++]);
+                temp.push_back(arr[i++]); //ADD the remainings ..
             }
+                                        //any one of these will get executed
              while(j<=e){
                 temp.push_back(arr[j++]);
             }
             int k=0;
-            for(int idx=s;idx<=e;idx++){
+            for(int idx=s;idx<=e;idx++){ // copy to original
                 arr[idx] = temp[k++];
             }
             return;
