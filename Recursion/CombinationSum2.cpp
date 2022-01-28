@@ -8,7 +8,7 @@ public:
             return;
         }
         for(int i=ind;i<candidates.size();i++){
-            if(i>ind and candidates[i]==candidates[i-1]){
+            if(i>ind and candidates[i]==candidates[i-1]){ //same number cannot be picked up as first number, to avoid lexi duplicate case
                 continue;
             }
             if(candidates[i]>target){
