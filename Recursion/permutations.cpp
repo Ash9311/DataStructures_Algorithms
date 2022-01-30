@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    void findAllPermutations(vector<int> &nums,int i,vector<int> &freq,vector<vector<int>> &res,vector<int> &ds){
+    void findAllPermutations(vector<int> &nums,vector<int> &freq,vector<vector<int>> &res,vector<int> &ds){
         if(ds.size()==nums.size()){
             res.push_back(ds);
             return;
@@ -10,7 +10,7 @@ public:
             if(!freq[i]){
                 freq[i]=1;
                 ds.push_back(nums[i]);
-                findAllPermutations(nums,i+1,freq,res,ds);
+                findAllPermutations(nums,freq,res,ds);
                 freq[i]=0;
                 ds.pop_back();
             }
@@ -22,7 +22,7 @@ public:
         vector<int> ds;
         vector<int> freq(nums.size(),0);
       
-        findAllPermutations(nums,0,freq,res,ds);
+        findAllPermutations(nums,freq,res,ds);
         return res;
     }
 };
