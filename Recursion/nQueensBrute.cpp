@@ -44,7 +44,7 @@ class Solution {
             if(isSafe(row,col,board,n)){
                 board[row][col]='Q';
                 solve(n,board,res,col+1);
-                board[row][col]='.';
+                board[row][col]='.'; //backtrack and try for different combinations
             }
         }
     }
