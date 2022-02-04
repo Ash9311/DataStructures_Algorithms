@@ -1,3 +1,4 @@
+https://leetcode.com/problems/n-queens/submissions/
 class Solution {
     
     public:
