@@ -15,8 +15,7 @@ Input:
 2 5 10
 6 7 11
 10
-
-  output = {1,2}
+output = {1,2}
 
 #include<bits/stdc++.h>
 using namespace std;
