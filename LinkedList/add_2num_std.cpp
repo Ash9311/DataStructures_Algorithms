@@ -1,4 +1,4 @@
-//https://leetcode.com/problems/add-two-numbers/
+//https://leetcode.com/problems/add-two-numbers-ii/
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -11,6 +11,14 @@
  */
 class Solution {
 public:
+    
+    long long reverseDigits(long long num)
+{
+    string strin = to_string(num);
+    reverse(strin.begin(), strin.end());
+    num = stoll(strin);
+    return num;
+}
     
 
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
@@ -37,13 +45,13 @@ public:
          for(auto it: v2){
             str2+=to_string(it);
         }
-        
+       
         long long sum = stoll(str1)+stoll(str2);
         ListNode* result = new ListNode(-1);
         ListNode *res = result;
         string summ = to_string(sum);
         ListNode* L2 = l1;
-       
+        sum = reverseDigits(sum);
         for(int i=0;i<summ.size() and result!=NULL;i++){
             ListNode* temp = new ListNode(sum%10);
             result->next = temp;
