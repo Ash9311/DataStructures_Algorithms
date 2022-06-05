@@ -21,9 +21,9 @@ public:
         for(int j=nums.size()-1;j>=0;j--){
             res[j]=res[j]*right;//6*1..2*4..1*12..1*24
             right =right*nums[j];//1*4..4*3..12*2..24*1
-            cout<<right<<" ";
+            
         }
-        //res=[,8,6]
+        
         return res;
     }
 };
