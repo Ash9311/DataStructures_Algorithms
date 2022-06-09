@@ -1,4 +1,6 @@
 //https://leetcode.com/problems/search-in-rotated-sorted-array/
+//there are 2 cases one is normal increasing array and the other is when start is greater than end
+
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
