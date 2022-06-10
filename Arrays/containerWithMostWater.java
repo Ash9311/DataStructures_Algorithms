@@ -1,3 +1,7 @@
+//https://leetcode.com/problems/container-with-most-water/
+//use 2 pointer approach and find the max water container after iterating all, can calculate the content by multiplying difference of
+//2 references and height of min height
+
 class Solution {
     public int maxArea(int[] height) {
         int water=0;
