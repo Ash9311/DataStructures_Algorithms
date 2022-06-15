@@ -8,7 +8,7 @@ public:
         unordered_set<char> set;
         int i=0,j=0,ans=0;
         int n = s.size();
-        while(i<n and j<n){
+        while(j<n){
             if(set.find(s[j])==set.end()){ //repeating char not found
                 set.insert(s[j]);
                 j++;
