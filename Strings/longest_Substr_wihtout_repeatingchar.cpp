@@ -14,8 +14,8 @@ public:
                 j++;
                 ans = max(ans,j-i);
             }
-            else{
-                set.erase(s[i]);
+            else{                   //repeating char is found
+                set.erase(s[i]); //erase it so that it doesnt interrupt in next substring
                 i++;
             }
         }
