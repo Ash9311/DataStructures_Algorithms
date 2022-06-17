@@ -1,4 +1,4 @@
-//declare 2 indexes. index1 is that point where the next element is greater from the end if its not there a reversed array is the ans. if not
+//declare 2 indexes. index1 is that point where the next element is greater while traversing from the end if its not there a reversed array is the ans. if not
 //find index2 which is the first greatest element from last w.r.t index1. swap it and reverse as mentioned in line 25.
 
 class Solution {
