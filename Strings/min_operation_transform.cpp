@@ -3,6 +3,19 @@
 //first check if both the strings are having same length and chars. initialize 2 pointers at the last index and decrement them 
 //according to the condition shown.ptrB is moved only if there is a match. And we need not modify the string, we just need the count.
 
+Input: 
+A = "GEEKSFORGEEKS" 
+B = "FORGEEKSGEEKS"
+Output: 3
+Explanation:The conversion can take place 
+in 3 operations:
+1. Pick 'R' and place it at the front, 
+   A="RGEEKSFOGEEKS"
+2. Pick 'O' and place it at the front, 
+   A="ORGEEKSFGEEKS"
+3. Pick 'F' and place it at the front, 
+   A="FORGEEKSGEEKS"
+
 class Solution{
 
     public:
