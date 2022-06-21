@@ -1,6 +1,7 @@
 //https://practice.geeksforgeeks.org/problems/print-diagonally4331/1
 
 //first print upper left triangle of the matrix including the mid diagonal, after that start with lower portion in different for loop
+//draw a matrix and strike the path, analyse the pattern where it starts and ends.
 class Solution{
 	
 	public:
