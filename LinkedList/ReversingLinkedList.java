@@ -19,7 +19,7 @@ class Solution {
             curr = next;
             
         }
-            return prev;
+            return prev; //return previous since it is the last node
     }
 
 }
