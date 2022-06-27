@@ -11,6 +11,8 @@ class Node
 }
 */
 
+//maintain a hashset and check for duplicates
+
 class Solution
 {
     //Function to remove duplicates from unsorted linked list.
@@ -33,3 +35,39 @@ class Solution
          return head;
     }
 }
+
+
+
+//cpp
+struct Node {
+  int data;
+  struct Node *next;
+  Node(int x) {
+    data = x;
+    next = NULL;
+  }
+};
+*/
+
+
+class Solution
+{
+    public:
+    //Function to remove duplicates from unsorted linked list.
+    Node * removeDuplicates( Node *head) 
+    {
+        Node *curr = head;
+        unordered_set<int> hs;
+        
+        while(curr->next!=NULL){
+            hs.insert(curr->data);
+            if(hs.find(curr->next->data)!=hs.end()){
+                curr->next = curr->next->next;
+            }
+            else{
+                curr = curr->next;
+            }
+        }
+        return head;
+    }
+};
