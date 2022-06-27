@@ -28,3 +28,26 @@ class Solution {
         return false;
     }
 }
+
+//cpp
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(head==NULL){
+            return false;
+        }
+        ListNode *turtle = head;
+        ListNode *hare = head;
+        
+        while(hare!=NULL and hare->next!=NULL){
+            turtle = turtle->next;
+            hare = hare->next->next;
+            
+            if(hare==turtle){
+                return true;
+            }
+        }
+        return false;
+        
+    }
+};
