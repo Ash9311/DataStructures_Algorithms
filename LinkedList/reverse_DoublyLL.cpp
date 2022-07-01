@@ -15,7 +15,8 @@ Node* reverseDLL(Node * head)
         curr = curr->prev; //since curr->prev is pointing to next node which we want to traverse
         
     }
-    return temp->prev;
+    temp = temp->prev //temp is the new head, since its reversed
+    return temp;
 }
 
 struct Node
