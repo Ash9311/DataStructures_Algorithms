@@ -38,3 +38,25 @@ class Solution
     }
     
 };
+
+//recursive
+class Solution
+{
+    public:
+    Node *compute(Node *head)
+    {
+        if(head==NULL or head->next==NULL){
+            return head;
+        }
+        
+        Node *res = compute(head->next);
+        
+        if(res->data > head->data){
+            return res;
+        }
+        else{
+            head->next = res;
+            return head;
+        }
+    }
+};
