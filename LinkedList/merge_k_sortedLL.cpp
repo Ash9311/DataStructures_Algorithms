@@ -27,7 +27,7 @@ public:
         
         for(int i=0;i<lists.size();i++){
             if(lists[i]!=NULL){
-                pq.push(lists[i]);
+                pq.push(lists[i]); //only head will be stored, next nodes wont be
             }
         }
         
@@ -36,7 +36,7 @@ public:
             tail->next = temp;
             tail = temp;
             pq.pop();
-            if(temp->next!=NULL){
+            if(temp->next!=NULL){ //since only head are being stored ,we need to check for next nodes
                 pq.push(temp->next); //since its a min pq, order will get arranged
             }
         }
