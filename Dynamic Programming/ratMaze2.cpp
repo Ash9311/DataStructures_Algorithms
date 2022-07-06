@@ -1,32 +1,36 @@
+//https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1#
+
+//use a recursive approach to traverse through all the paths without obstacles and maintain the string change(it is being passed by value)
+
 class Solution{
+    public:
     
-    void find(vector<vector<int>> &m,string s,int n,int i,int j,vector<string> &ans){
-    if(i==n-1 and j==n-1){
-        ans.push_back(s);
+    void findPath(vector<vector<int>> &m,string s,int n,int row,int col,vector<string> &result){
+        if(row==n-1 and col==n-1){
+            result.push_back(s);
+            return;
+        }
+        //string is passed by value so after the current stack it gets cleared  
+        if(row>=0 and col>=0 and row<n and col<n and m[row][col]==1){
+            m[row][col]=2; //mark as visited notation
+            findPath(m,s+"D",n,row+1,col,result);
+            findPath(m,s+"L",n,row,col-1,result);
+            findPath(m,s+"U",n,row-1,col,result);
+            findPath(m,s+"R",n,row,col+1,result);
+            m[row][col]=1//back track to explore new ones
+            
+        }
         return;
     }
-    if(i>=0 and j>=0 and i<n and j<n and m[i][j]){
-        m[i][j]=0;
-        find(m,s+"D",n,i+1,j,ans);
-        find(m,s+"L",n,i,j-1,ans);
-        find(m,s+"R",n,i,j+1,ans);
-        find(m,s+"U",n,i-1,j,ans);
-        m[i][j]=1;
-    }
-    return;
-}
-
     
-    public:
     vector<string> findPath(vector<vector<int>> &m, int n) {
         // Your code goes here
-        vector<string> ans;
-        if(m[0][0]==0 || m[n-1][n-1]==0){
-            return ans;
+        vector<string> result;
+        if(m[0][0]==0 or m[n-1][n-1]==0){
+            return result;
         }
         string s;
-        find(m,s,n,0,0,ans);
-  
-        return ans;
+        findPath(m,s,n,0,0,result);
+        return result;
     }
 };
