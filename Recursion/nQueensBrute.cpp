@@ -73,6 +73,7 @@ public:
 public:
     
     bool isSafe(vector<vector<int>> board,int x,int y,int n){
+         // x and y are row,col
         for(int i=0;i<x;i++){
             if(board[i][y]==1){ //vertical up check
                 return false;
@@ -88,7 +89,7 @@ public:
             col--;
             
         }
-        
+        //we are making duplicates of row,col to check
         row=x,col=y;
         while(row>=0 and col<n){ //upper right diagonal check
             if(board[row][col]==1){
@@ -101,8 +102,8 @@ public:
         
     }
 
-    void solve(int x,int n,vector<vector<int>> &board,vector<vector<int>> &result){
-        if(x==n){
+    void solve(int row,int n,vector<vector<int>> &board,vector<vector<int>> &result){
+        if(row==n){
             vector<int> v;  //since we need array of column indexes
             for(int i=0;i<n;i++){
                 for(int j=0;j<n;j++){
@@ -116,10 +117,10 @@ public:
         }
         
         for(int col=0;col<n;col++){
-            if(isSafe(board,x,col,n)){
-                board[x][col]=1; //marks as visited
-                solve(x+1,n,board,result);
-                board[x][col]=0; //omit the visited sign so that it doesnt interfere with new path which we explore
+            if(isSafe(board,row,col,n)){
+                board[row][col]=1; //marks as visited
+                solve(row+1,n,board,result);
+                board[row][col]=0; //omit the visited sign so that it doesnt interfere with new path which we explore
             }
         }
     }
