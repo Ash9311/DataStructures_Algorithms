@@ -46,6 +46,7 @@ public:
 
 
 ------------------------------
+    //https://practice.geeksforgeeks.org/problems/solve-the-sudoku-1587115621/1#
     
     //traverse through all the elements of 2d sudoku check if there is any empty (i.e 0) element. and then
     //use a recursive approach and check for all 9 combination until you find a valid one.
