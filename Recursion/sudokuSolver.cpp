@@ -43,3 +43,61 @@ public:
         return true;
     }
 };
+
+
+------------------------------
+    
+    //traverse through all the elements of 2d sudoku check if there is any empty (i.e 0) element. and then
+    //use a recursive approach and check for all 9 combination until you find a valid one.
+    class Solution 
+{
+    public:
+    //Function to find a solved Sudoku. 
+    bool SolveSudoku(int grid[N][N])  
+    { 
+        for(int i=0;i<N;i++){
+            for(int j=0;j<N;j++){
+                if(grid[i][j]==0){
+                    for(char c=1;c<=9;c++){
+                        if(isValid(grid,i,j,c)){
+                            grid[i][j] = c;
+                            if(SolveSudoku(grid)==true){ //if all possibilities are set
+                                return true;
+                            }
+                            else{
+                                grid[i][j]=0; //backtrack and explore other combination
+                            }
+                        }
+                    }
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    bool isValid(int grid[N][N],int row,int col,char c){
+        for(int i=0;i<9;i++){
+            if(grid[i][col]==c){ //check all the elements in the current column
+                return false;
+            }
+            if(grid[row][i]==c){ //check all the elements in the current row
+                return false;
+            }
+            if(grid[3*(row/3) + i/3][3*(col/3) + i%3] ==c){ //check for sub grid..using this logic we will be getting all 9 elements if subgrid
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    //Function to print grids of the Sudoku.
+    void printGrid (int grid[N][N]) 
+    {
+        for(int i=0;i<N;i++){
+            for(int j=0; j<N;j++){
+                cout<<grid[i][j]<<" ";
+            }
+        }
+    }
+};
