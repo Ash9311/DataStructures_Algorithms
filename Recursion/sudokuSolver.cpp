@@ -59,8 +59,8 @@ public:
         for(int i=0;i<N;i++){
             for(int j=0;j<N;j++){
                 if(grid[i][j]==0){
-                    for(char c=1;c<=9;c++){
-                        if(isValid(grid,i,j,c)){
+                    for(char c=1;c<=9;c++){ //can also take it as int, char also works
+                        if(isValid(grid,i,j,c)){ 
                             grid[i][j] = c;
                             if(SolveSudoku(grid)==true){ //if all possibilities are set
                                 return true;
