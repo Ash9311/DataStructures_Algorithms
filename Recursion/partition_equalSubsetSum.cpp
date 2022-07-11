@@ -1,7 +1,7 @@
 //https://practice.geeksforgeeks.org/problems/subset-sum-problem2014/1
 
 //first find the sum and then set sum/2 as a target. and then use recursive approach to find all the subset combination varying the target as
-//we are including the element or not
+//we are including the element or not. we are starting from the last index and then shrinking
 class Solution{
 public:
 
