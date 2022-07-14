@@ -1,5 +1,5 @@
 class Solution {
-       
+//maintain a hashmap and check for target element for each element that you traverse       
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
          unordered_map<int,int> mp;
