@@ -1,4 +1,6 @@
 //https://www.codingninjas.com/codestudio/problems/sort-a-stack_985275?topList=love-babbar-dsa-sheet-problems&leftPanelTab=0
+//https://practice.geeksforgeeks.org/problems/sort-a-stack/1
+
 //first use a recursive approach and reach bottom of the stack and then
 //use sortedInsert function to place the elements at the right place keeping
 //other numbers by side and recursion will do the sort
