@@ -51,7 +51,7 @@ public:
             if(next[i] == -1){      //as per out function next to last element is marked as -1 so rectify it
                 next[i] = n;
             }
-            int b = (next[i] - prev[i] -1);
+            int b = (next[i] - prev[i] -1); //same length h[i] can be fit in this breadth
             int newArea = l*b;
             area = max(area,newArea);
             // cout<<next[i]<<" "<<prev[i]<<" "<<newArea<<" "<<heights[i]<<endl;
