@@ -1,4 +1,5 @@
-
+//https://leetcode.com/problems/largest-rectangle-in-histogram/
+//TC - O(N) SC - O(N)
 //find the prev and next smaller element for each .and then compute the area for each and keep a track for max area
 class Solution {
     
@@ -40,9 +41,9 @@ public:
         int area = INT_MIN;
         int n = heights.size();
         vector<int> next(n);
-        next = nextSmallerElement(heights,n);
+        next = nextSmallerElement(heights,n); // O(N)
         vector<int> prev(n);
-        prev = prevSmallerElement(heights,n);
+        prev = prevSmallerElement(heights,n); // 0(N)
         
         for(int i=0;i<n;i++){
             cout<<next[i]<<" "<<prev[i]<<endl;
