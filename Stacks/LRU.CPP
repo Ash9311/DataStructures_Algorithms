@@ -17,6 +17,7 @@ public:
         if(mp.find(key)==mp.end()){
             return -1;
         }
+        //delete it wherever its in between and insert at the front
         list<int>::iterator it = address[key]; //get the address , delete it and insert at the front
         ls.erase(it);
         address.erase(key);
@@ -41,7 +42,7 @@ public:
             mp.erase(k);
             size--;
         }
-        //insert the new one
+        //insert the new one at front
         size++;
         ls.push_front(key);
         address[key]=ls.begin();
