@@ -17,7 +17,7 @@ class SpecialStack {
         }
         else{
             if(data<mini){
-                st.push(2*data -mini);
+                st.push(2*data -mini); //by using '2*data -mini' original value gets encoded and while popping out we get mini for remaining elements on stack
                 mini = data;
             }
             else{
@@ -36,7 +36,7 @@ class SpecialStack {
             return curr;
         }
         else{
-            int prevMini = mini;
+            int prevMini = mini; //by doing this we get mini in remaining elements, we did this so that we get prev min from curr min
             int val = 2 * mini - curr;
             mini = val;
             return prevMini;
@@ -48,7 +48,7 @@ class SpecialStack {
             return -1;
         }
         int curr = st.top();
-        if(curr<mini){
+        if(curr<mini){  //bcz we didnt put the exact number 
             return mini;
         }
         else{
