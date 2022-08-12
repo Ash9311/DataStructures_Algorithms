@@ -16,6 +16,8 @@ class CircularQueue{
     }
 
     // Enqueues 'X' into the queue. Returns true if it gets pushed into the stack, and false otherwise.
+    //there are 4 cases,
+    ///1)when queue is full, 2)when its empty and ur pushing first element,3)when rear is at end, push it to start 4) normal enqueue
     bool enqueue(int value){
         //check whether queue is full
         if((rear==size-1 and front==0) or (rear==(front-1)%(size-1))){
