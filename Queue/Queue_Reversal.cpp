@@ -16,3 +16,24 @@ queue<int> rev(queue<int> q)
     }
     return q;
 }
+
+
+//using recursion
+//store the front value and use recursion to go upto last element. and then push back what was stored in 'front' therby we get in reverse
+void helper(queue<int> &q){
+    if(q.empty()){
+       return ;
+    }
+    int front = q.front();
+    q.pop();
+    helper(q);
+    q.push(front);
+}
+
+//Function to reverse the queue.
+queue<int> rev(queue<int> q)
+{
+    queue<int> res;
+    helper(q);
+    return q;
+}
