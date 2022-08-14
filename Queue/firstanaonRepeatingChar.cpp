@@ -1,4 +1,50 @@
 //https://practice.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream1216/1
+
+
+//iterate through each char in string, update the map count and push every char to queue.
+//if q.front() is not repeating then we found what we need, push it to res else keep popping till q is empty
+class Solution {
+	public:
+		string FirstNonRepeating(string A){
+		    // Code here
+		    queue<char> q;
+		    
+		    unordered_map<char,int> count;
+		    char ch;
+		    int i=0;
+		    string res = "";
+		    for(i=0;i<A.length();i++){
+		        ch = A[i];
+		        count[ch]++;
+		        q.push(ch);
+		        
+		        //since we are searching for non repeating in entire string. we
+		        //need to check the queue where we stored all.
+		       while(!q.empty()){
+		           if(count[q.front()]>1){
+		               q.pop();
+		           }
+		           else{
+		               res.push_back(q.front());
+		               break;
+		           }
+		       }
+		        
+		        if(q.empty()){
+		            res.push_back('#');
+		        }
+		    }
+		    return res;
+		}
+
+};
+
+
+
+
+//Approach #2
+
+
 // { Driver Code Starts
 #include<bits/stdc++.h>
 using namespace std;
