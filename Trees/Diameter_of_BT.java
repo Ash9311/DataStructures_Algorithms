@@ -17,6 +17,35 @@ int maxx=0;
     }
 };
 
+//#2
+
+class Solution {
+  public:
+  
+     int height(struct Node* node){
+        
+        if(node==NULL){
+            return 0;
+        }
+        int left = height(node->left)+1;
+        int right = height(node->right)+1;
+        
+        return max(left,right);
+    }
+  
+    // Function to return the diameter of a Binary Tree.
+    int diameter(Node* root) {
+       if(root==NULL){
+            return 0;
+        }
+        //there are 3 ways, it might be in left subtree,right subtree or both
+        int op1 = diameter(root->left);
+        int op2 = diameter(root->right);
+        int op3 = height(root->left) + height(root->right) + 1;
+        int ans = max(op1,max(op2,op3));
+        return ans;
+    }
+};
 
 
 
