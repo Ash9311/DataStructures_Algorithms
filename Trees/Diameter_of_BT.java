@@ -17,7 +17,7 @@ int maxx=0;
     }
 };
 
-//#2
+//#2 O(N*N)
 
 class Solution {
   public:
@@ -47,7 +47,7 @@ class Solution {
     }
 };
 
-//optimized, in this approach we get height while hunting for diameter also by using pairs
+//optimized, in this approach we get height while hunting for diameter also by using pairs o(N)
 lass Solution {
   public:
     
