@@ -1,32 +1,54 @@
 class Solution {
-
-    int height(Node root){
-      
-        if(root==null){
+public:
+int maxx=0;
+    int maxDepth(TreeNode* root){
+        if(root==NULL){
             return 0;
         }
-       
-        return 1+ Math.max(height(root.left),height(root.right));
+        int left  = maxDepth(root->left);
+        int right = maxDepth(root->right);
+         maxx = max(left+right,maxx);
+        return max(left,right)+1;
     }
     
-    int diameter(Node root) {
-        // Your code here
-       if(root==null){
-           return 0;
-       }
+    int diameterOfBinaryTree(TreeNode* root) {
+        maxDepth(root);
+        return maxx;
+    }
+};
+
+
+
+
+// class Solution {
+
+//     int height(Node root){
+      
+//         if(root==null){
+//             return 0;
+//         }
        
-       int leftSubtree = height(root.left);
-       int rightSubtree = height(root.right);
+//         return 1+ Math.max(height(root.left),height(root.right));
+//     }
+    
+//     int diameter(Node root) {
+//         // Your code here
+//        if(root==null){
+//            return 0;
+//        }
        
-       int leftDiameter = diameter(root.left);
-       int rightDiameter = diameter(root.right);
+//        int leftSubtree = height(root.left);
+//        int rightSubtree = height(root.right);
        
-       return Math.max(leftSubtree+rightSubtree+1,Math.max(leftDiameter,rightDiameter));
-       //find max diameter for tree with main root and without
+//        int leftDiameter = diameter(root.left);
+//        int rightDiameter = diameter(root.right);
+       
+//        return Math.max(leftSubtree+rightSubtree+1,Math.max(leftDiameter,rightDiameter));
+//        //find max diameter for tree with main root and without
        
         
-    }
-}
+//     }
+// }
 
 
 // class Solution {
@@ -85,22 +107,4 @@ class Solution {
 
 
 
-// class Solution {
-// public:
-// int maxx=0;
-//     int maxDepth(TreeNode* root){
-//         if(root==NULL){
-//             return 0;
-//         }
-//         int left  = maxDepth(root->left);
-//         int right = maxDepth(root->right);
-//          maxx = max(left+right,maxx);
-//         return max(left,right)+1;
-//     }
-    
-//     int diameterOfBinaryTree(TreeNode* root) {
-//         maxDepth(root);
-//         return maxx;
-//     }
-// };
 
