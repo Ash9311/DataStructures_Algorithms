@@ -47,7 +47,7 @@ class Solution {
     }
 };
 
-//optimized
+//optimized, in this approach we get height while hunting for diameter also by using pairs
 lass Solution {
   public:
     
