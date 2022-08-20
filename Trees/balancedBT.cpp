@@ -10,6 +10,38 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+class Solution{
+    public:
+    //Function to check whether a binary tree is balanced or not.
+    int height(Node *root){
+        if(root==NULL){
+            return 0;
+        }
+        int left = height(root->left)+1;
+        int right = height(root->right)+1;
+        
+        return max(left,right);
+    }
+    
+    bool isBalanced(Node *root)
+    {
+        
+        if(root==NULL){
+            return true;
+        }
+        bool left = isBalanced(root->left); //recursive approach to check all nodes
+        bool right = isBalanced(root->right);
+        bool diff = abs(height(root->left) - height(root->right))<=1;
+        if(left and right and diff){
+            return true;
+        }
+        return false;
+    }
+};
+
+
+//#2
 class Solution {
 public:
     
