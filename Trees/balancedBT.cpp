@@ -61,3 +61,46 @@ public:
         return abs(right-left)<=1 and isBalanced(root->left) and isBalanced(root->right);
     }
 };
+
+
+#optimized
+
+class Solution{
+    public:
+    //make a use of pair of bool,int. bool to check if the tree is balanced and int to track the height recursively.
+    //once we get everything apply the parameters to the eqn and get the ans
+    pair<bool,int> isBalancedFast(Node* root){
+        if(root==NULL){
+            pair<bool,int> p = make_pair(true,0);
+            return p;
+        }
+        
+        pair<bool,int> left = isBalancedFast(root->left);
+        pair<bool,int> right = isBalancedFast(root->right);
+        
+        bool leftans = left.first; //is balanced check
+        bool rightans = right.first;
+        
+        bool diff = abs(left.second - right.second) <=1; //condition check
+        
+        pair<bool,int> ans;
+        ans.second=max(left.second,right.second)+1; //calculating height on the go, instead of doing separately
+        
+        if(leftans and rightans and diff){
+            ans.first = true;
+        }
+        else{
+            ans.first = false;
+        }
+        
+        return ans;
+        
+    }
+    
+    bool isBalanced(Node *root)
+    {
+        pair<bool,int> result = isBalancedFast(root);
+        return result.first;
+        
+    }
+};
