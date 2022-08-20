@@ -30,7 +30,7 @@ class Solution{
         if(root==NULL){
             return true;
         }
-        bool left = isBalanced(root->left); //recursive approach to check all nodes
+        bool left = isBalanced(root->left); //recursive approach to check all nodes(since condition must hold for all nodes)
         bool right = isBalanced(root->right);
         bool diff = abs(height(root->left) - height(root->right))<=1;
         if(left and right and diff){
