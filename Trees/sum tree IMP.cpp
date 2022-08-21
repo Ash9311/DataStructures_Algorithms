@@ -32,7 +32,9 @@ class Solution
         
         if(leftSumTree.first and rightSumTree.first and condition){
             ans.first = true;
-            ans.second = 2*root->data; //since left and right values are equal
+            ans.second = 2*root->data; //since value of parent and sum of children is equal
+            //both are added up and the sum can be passed to upper hierarchy
+            //can also write -> ans.second = root->data + leftSumTree.second + rightSumTree.second; 
         }
         else{
             ans.first = false;
