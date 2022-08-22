@@ -19,12 +19,12 @@ class Solution{
     	    vector<int> temp(size);
     	    
     	    //level process
-    	    for(int i=0;i<size;i++){
+    	    for(int i=0;i<size;i++){ //by using for loop children of next level will be stored
     	        Node *frontNode = q.front();
     	        q.pop();
     	        //normal insert or reverse insert
     	        int index = leftToRight ? i : size - i - 1; 
-    	        temp[index] = frontNode->data; //store it
+    	        temp[index] = frontNode->data; //store it, note that it can overlap with other element of same level and replace it.
     	        //check left and right nodes
     	        if(frontNode->left){
     	            q.push(frontNode->left);
