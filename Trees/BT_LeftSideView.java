@@ -1,3 +1,28 @@
+//CPP         https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1
+//traverse recursively and check lvl==ans.size() condition to determine first node of new level
+void solve(Node *root,vector<int> &ans,int lvl){
+    if(root==NULL){
+        return;
+    }
+    //by this condition we get to know that we entered a new level
+    if(lvl==ans.size()){
+        ans.push_back(root->data);
+    }
+    solve(root->left,ans,lvl+1); //traverse and increment lvl
+    solve(root->right,ans,lvl+1);
+    
+}
+
+vector<int> leftView(Node *root)
+{
+   vector<int> ans;
+   solve(root,ans,0);
+   return ans;
+}
+
+
+//java code
+
 // { Driver Code Starts
 import java.util.LinkedList; 
 import java.util.Queue; 
