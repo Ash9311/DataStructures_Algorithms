@@ -1,3 +1,28 @@
+//https://leetcode.com/problems/maximum-depth-of-binary-tree/submissions/
+class Solution {
+    
+    private:
+    int solve(TreeNode* root,int depth,int maxDepth){
+        if(root==NULL){
+            return depth;
+        }
+        int left =solve(root->left,depth+1,maxDepth);
+        int right =solve(root->right,depth+1,maxDepth);
+        
+        return max(left,right);
+        
+    }
+    
+public:
+    int maxDepth(TreeNode* root) {
+        int maxDepth=0;
+        int depth=0;
+        return solve(root,depth,maxDepth);
+    }
+};
+
+
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
