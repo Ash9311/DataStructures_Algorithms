@@ -44,3 +44,43 @@ class Solution{
         return ans;
     }
 };
+
+
+//optimized approach
+
+//first check the 0th index of preOder and then find the same element in Inorder, get the index of it and using
+//that we can find left and right nodes
+class Solution{
+    
+    private:
+    void createMapping(int in[],map<int,int> &nodeToIndex,int n){
+        for(int i=0;i<n;i++){
+            nodeToIndex[in[i]]=i;
+        }
+    }
+    
+    private:
+    Node* solve(int in[],int pre[],int &index,int inOrderStart,int inOrderEnd,int n,map<int,int> &nodeToIndex){
+        if(index>=n or inOrderStart > inOrderEnd){
+            return NULL;
+        }
+        int element = pre[index++];//take the index from preorder and move it forward
+        Node *root = new Node(element); //create a new node out of it
+        int position = nodeToIndex[element]; //find that node's position in inorder, so that we get left and right info
+        
+        root->left = solve(in,pre,index,inOrderStart,position-1,n,nodeToIndex);
+        root->right = solve(in,pre,index,position+1,inOrderEnd,n,nodeToIndex);
+        return root;
+    }
+    
+    public:
+    Node* buildTree(int in[],int pre[], int n)
+    {
+        int preOrderIndex = 0;
+       map<int,int> nodeToIndex;
+       //create node to index maxo
+       createMapping(in,nodeToIndex,n);
+        Node* ans = solve(in,pre,preOrderIndex,0,n-1,n,nodeToIndex);
+        return ans;
+    }
+};
