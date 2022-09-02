@@ -28,3 +28,5 @@ class Solution
         
     }
 };
+
+//T.C - O(N) ,SC - O(1)
