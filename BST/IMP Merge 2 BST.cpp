@@ -67,4 +67,5 @@ TreeNode<int> *mergeBST(TreeNode<int> *root1, TreeNode<int> *root2){
     
     //step3: construct BST out of merged sorted array
     return inOrderToBST(0,mergedArray.size()-1,mergedArray); //constructing BST out of it
+    //T.C - O(N+M)   S.C - O(N+M)
 }
