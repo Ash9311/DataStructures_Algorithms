@@ -1,3 +1,5 @@
+//https://www.codingninjas.com/codestudio/problems/largest-bst-subtree_893103?leftPanelTab=0&utm_source=youtube&utm_medium=affiliate&utm_campaign=Lovebabbar
+//T.C - O(N)
 //create a class 'info' consisting of all the required data. recursively traverse fr left and right. set
 //data fr currNode based on left,right result. chevk if condition is satisfied and recursion will handle.
 //update the ans to check fr max
