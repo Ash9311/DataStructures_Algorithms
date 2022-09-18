@@ -11,6 +11,8 @@ class heap{
         size=0;
     }
     //T.C - O(logn)
+     //first insert it at last and then place it in correct position.
+  //heap property -> parent = index/2, Lchild = index*2 , Rchild = (index+1)*2;
     void insert(int val){
         size++;
         int index = size;
