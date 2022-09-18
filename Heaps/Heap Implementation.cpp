@@ -7,12 +7,10 @@ class heap{
     int size;
 
     heap(){
-       // arr[0]=-1;
+      //  arr[0]=-1;
         size=0;
     }
     //T.C - O(logn)
-  //first insert it at last and then place it in correct position.
-  //heap property -> parent = index/2, Lchild = index*2 , Rchild = (index+1)*2;
     void insert(int val){
         size++;
         int index = size;
@@ -28,6 +26,12 @@ class heap{
                 return;
             }
         }
+    }
+
+    void print(){
+        for(int i=1;i<=size;i++){
+            cout<<arr[i]<<" ";
+        }cout<<endl;
     }
 
     void deletefromHeap(){
@@ -63,12 +67,36 @@ class heap{
 
     }
 
-    void print(){
-        for(int i=1;i<=size;i++){
-            cout<<arr[i]<<" ";
-        }cout<<endl;
-    }
+    
 };
+
+
+
+void heapify(int arr[],int n,int i){
+    int largest = i;
+    int left = i*2;
+    int right = (2*i)+1;
+    if(left<=n and arr[largest]<arr[left]){ //check if left and right child is larger, if yes then update,take care of boundary
+        largest = left;  
+    }
+    if(right<=n and arr[largest]<arr[right]){
+        largest = right;
+    }
+
+    if(largest!=i){ //if updated
+        swap(arr[largest],arr[i]);
+        heapify(arr,n,largest);
+    }
+}
+//T.C -> O(nlogn)
+void heapSort(int arr[],int n){
+    int size = n;
+    while(size>1){
+        swap(arr[size],arr[1]);
+        size--;
+        heapify(arr,size,1);
+    }
+}
 
 int main(){
     heap h;
@@ -80,5 +108,17 @@ int main(){
     h.print();
     h.deletefromHeap();
     h.print();
+
+int arr[6] = {-1,54,53,55,52,50};
+int n =5;
+for(int i=n/2; i>0;i--){
+    heapify(arr,n,i);
+}
+cout<<"Printing the array now"<<endl;
+    heapSort(arr,n);
+    for(int i=1;i<=n;i++){
+        cout<<arr[i]<<" ";
+    }
+
     return 0;
 }
