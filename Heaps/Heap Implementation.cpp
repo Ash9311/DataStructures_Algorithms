@@ -95,7 +95,7 @@ void heapSort(int arr[],int n){
     int size = n;
     while(size>1){
         swap(arr[size],arr[1]);
-        size--;
+        size--; //placed at correct index so we can ignore it and focus on others
         heapify(arr,size,1);
     }
 }
