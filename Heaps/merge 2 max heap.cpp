@@ -37,6 +37,10 @@ class Solution{
         for(int i=N/2-1;i>=0;i--){
              heapify(mergedHeap,mergedHeap.size()-1,i);
         }
+        //reason y v run heapify in a loop of N/2. find the dry run below,swapping takes place
+//         10 5 9 2 12 7 6 
+//         10 12 9 2 5 7 6 
+//         12 10 9 2 5 7 6 
         return mergedHeap;
         
     }
