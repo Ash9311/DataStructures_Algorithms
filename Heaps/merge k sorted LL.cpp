@@ -7,7 +7,7 @@ class compare{
         return a->data > b->data;
     }
 };
-
+//T.C -> O(KlogK) + O(n*k logk)
 Node<int> *mergeKLists(vector<Node<int>*> &listArray)
 {
    priority_queue<Node<int>*,vector<Node<int>*>, compare> minHeap;
@@ -18,7 +18,7 @@ Node<int> *mergeKLists(vector<Node<int>*> &listArray)
     Node<int> *head = NULL;
     Node<int> *tail = NULL;
     //step 1:
-    for(int i=0;i<k;i++){
+    for(int i=0;i<k;i++){ //O(KlogK)
         if(listArray[i]!=NULL){
             minHeap.push(listArray[i]);
         }
@@ -28,7 +28,7 @@ Node<int> *mergeKLists(vector<Node<int>*> &listArray)
         minHeap.pop();
         
         if(top->next!=NULL){//push the next linked node to PQ
-            minHeap.push(top->next);
+            minHeap.push(top->next);    //O(n*k logk)
         }
         if(head==NULL){ //ans LL is empty, create one
             head = top;
