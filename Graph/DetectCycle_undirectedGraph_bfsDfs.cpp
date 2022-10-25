@@ -83,3 +83,64 @@ class Solution {
     }
 };
 
+-----------------------------------------------------
+  
+  // style 2
+  //https://www.codingninjas.com/codestudio/problems/cycle-detection-in-undirected-graph_1062670?topList=love-babbar-dsa-sheet-problems&leftPanelTab=0&utm_source=youtube&utm_medium=affiliate&utm_campaign=Lovebabbar
+  
+  #include<unordered_map>
+#include<queue>
+#include<list>
+//create adjacency list, visited vector. iterate through each nodes and call isCyclicBFS if not visited.
+
+//keep track of parent node. first mark the current node as visited and push it to the queue process each node from the queue check condition for their
+//neighbouring nodes.
+bool isCyclicBFS(int src,unordered_map<int,bool> &vis,unordered_map<int,list<int>> &adj){
+    unordered_map<int,int> parent; //keep track of parent node
+    parent[src] = -1;
+    vis[src] = 1;
+    queue<int> q;
+    q.push(src); //push src to queue
+    while(!q.empty()){ //process each nodes from the queue
+        int front = q.front();
+        q.pop();
+        for(auto neighbour: adj[front]){
+            if(vis[neighbour] && neighbour!=parent[front]){ //if any node is visited and neighbour isnt the parent then there is a cycle
+                return true;
+            }
+            else if(!vis[neighbour]){ //if not a visited node then move forward by pushing it to queue and enter its parent and visited true
+                q.push(neighbour);
+                vis[neighbour] = true;
+                parent[neighbour] = front;
+            }
+        }
+    }
+    return false;
+}
+
+string cycleDetection (vector<vector<int>>& edges, int n, int m)
+{
+    //create adj list
+    unordered_map<int,list<int>> adj;
+    for(int i=0;i<m;i++){
+        int u = edges[i][0];
+        int v = edges[i][1];
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    
+    unordered_map<int,bool> vis;
+    //to handle disconnected components
+    for(int i=0;i<n;i++){
+        if(!vis[i]){
+            bool ans = isCyclicBFS(i,vis,adj);
+            if(ans==1){
+                return "Yes";
+            }
+        }
+    }
+    return "No";
+}
+
+  
+  
