@@ -88,7 +88,7 @@ class Solution {
   // style 2
   //https://www.codingninjas.com/codestudio/problems/cycle-detection-in-undirected-graph_1062670?topList=love-babbar-dsa-sheet-problems&leftPanelTab=0&utm_source=youtube&utm_medium=affiliate&utm_campaign=Lovebabbar
   
-  #include<unordered_map>
+ #include<unordered_map>
 #include<queue>
 #include<list>
 //create adjacency list, visited vector. iterate through each nodes and call isCyclicBFS if not visited.
@@ -117,6 +117,22 @@ bool isCyclicBFS(int src,unordered_map<int,bool> &vis,unordered_map<int,list<int
     }
     return false;
 }
+//mark node as visited first. and then process the neighbours
+bool isCyclicDFS(int node,int parent,unordered_map<int,bool> &vis, unordered_map<int,list<int>> &adj){
+    vis[node]=true;
+    for(auto it: adj[node]){
+        if(!vis[it]){
+            if(isCyclicDFS(it,node,vis,adj)){ //recursively call its neighbours. if any 1 if it retruns true then its cyclic
+                return true;
+            }
+        }
+        else if(it!=parent){ //its cyclic if visited and not a parent
+            return true;
+        }
+        
+    }
+    return false;
+}
 
 string cycleDetection (vector<vector<int>>& edges, int n, int m)
 {
@@ -133,7 +149,7 @@ string cycleDetection (vector<vector<int>>& edges, int n, int m)
     //to handle disconnected components
     for(int i=0;i<n;i++){
         if(!vis[i]){
-            bool ans = isCyclicBFS(i,vis,adj);
+            bool ans = isCyclicDFS(i,-1,vis,adj);
             if(ans==1){
                 return "Yes";
             }
