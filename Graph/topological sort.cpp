@@ -42,3 +42,59 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
     }
     return ans;
 }
+
+
+-----------------------------------------------------------------
+//using Kahn's algo
+
+#include <bits/stdc++.h> 
+#include<unordered_map>
+#include<stack>
+#include<list>
+//T.C - O(N+E)   S.C - O(N+E)
+//create adj list. maintain a indegree vector. if indegree of any node is zero then push it to the queue
+//perform BFS on the queue, store ans and update the indegree as you pop nodes on queue.
+vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
+    //create adj list
+    unordered_map<int, list<int>> adj;
+    for(int i=0;i<e;i++){
+        int u = edges[i][0];
+        int v = edges[i][1];
+        adj[u].push_back(v);
+    }
+    
+    //find all indegrees
+    vector<int> indegrees(v);
+    for(auto it: adj){
+        for(auto j: it.second){
+            indegrees[j]++;
+        }
+    }
+    
+    //push 0 indegree nodes
+    queue<int> q;
+    for(int i=0;i<v;i++){
+        if(indegrees[i]==0){
+            q.push(i);
+        }
+    }
+    
+    //do BFS
+    vector<int> ans;
+    while(!q.empty()){
+        int front = q.front();
+        q.pop();
+        
+        //store ans;
+        ans.push_back(front);
+        
+        //update neighbour indegree
+        for(auto neighbour:adj[front]){
+            indegrees[neighbour]--;
+            if(indegrees[neighbour]==0){
+                q.push(neighbour);
+            }
+        }
+    }
+ return ans;
+}
