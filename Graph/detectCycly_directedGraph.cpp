@@ -48,6 +48,64 @@ int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {
 
 
 
+------------------------------------------------------------
+    //using kahn's algo
+    //T.C - O(N+E)   S.C - O(N+E)
+//create adj list. maintain a indegree vector. if indegree of any node is zero then push it to the queue
+//perform BFS on the queue, update count and the indegree as you pop nodes on queue. check if count is equal to n
+   
+#include<unordered_map>
+#include<list>
+#include<queue>
+
+int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {
+    unordered_map<int, list<int>> adj;
+    for(int i=0;i<edges.size();i++){
+        int u = edges[i].first -1; //-1 since nodes are starting from 1
+        int v = edges[i].second -1;
+        adj[u].push_back(v);
+    }
+    
+    //find all indegrees
+    vector<int> indegrees(n);
+    for(auto it: adj){
+        for(auto j: it.second){
+            indegrees[j]++;
+        }
+    }
+    
+    //push 0 indegree nodes
+    queue<int> q;
+    for(int i=0;i<n;i++){
+        if(indegrees[i]==0){
+            q.push(i);
+        }
+    }
+    
+    //do BFS
+    int count=0;
+    while(!q.empty()){
+        int front = q.front();
+        q.pop();
+        
+        //update count
+        count++;
+        
+        //update neighbour indegree
+        for(auto neighbour:adj[front]){
+            indegrees[neighbour]--;
+            if(indegrees[neighbour]==0){
+                q.push(neighbour);
+            }
+        }
+    }
+  if(count==n){ //if graph is topological then count would be same as num of nodes
+      return false;
+  }
+    return true;
+}
+
+
 
 
 
