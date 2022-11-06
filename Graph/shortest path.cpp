@@ -3,6 +3,7 @@
 #include<list>
 using namespace std;
 //T.C-> O(N+E)   S.C->O(N+E)
+//first find the topological sort and insert it in a stack . using topo sort data we get the min distance from src to all nodes 
 class Graph{
  public:
     unordered_map<int, list<pair<int,int>>> adj;
@@ -33,15 +34,15 @@ void dfs(int node, vector<bool> &visited,stack<int> &topo){
 }
 
 void getShortestPath(int src,vector<int> &dist,stack<int> &topo){
-    dist[src] = 0;
+    dist[src] = 0; //distance from src to src is zero
 
-    while(!topo.empty()){
+    while(!topo.empty()){ //process for each node that is in the stack
         int top = topo.top();
         topo.pop();
 
         if(dist[top]!=INT_MAX){
             for(auto i: adj[top]){
-                if(dist[top]+i.second < dist[i.first]){
+                if(dist[top]+i.second < dist[i.first]){ //if distance is lesser than prev computed then update
                     dist[i.first] = dist[top] + i.second;
                 }
             }
@@ -51,6 +52,7 @@ void getShortestPath(int src,vector<int> &dist,stack<int> &topo){
 };
 
 int main(){
+    //construct graph
     Graph g;
     g.addEdge(0,1,5);
     g.addEdge(0,2,3);
@@ -63,7 +65,7 @@ int main(){
     g.addEdge(4,5,-2);    
     g.printAdj();
     int n = 6;
-    vector<bool> visited(n,false);
+    vector<bool> visited(n,false); //declare visited vector and stack to obtain topo order
     stack<int> st;
     //topological sort
     for(int i=0;i<n;i++){
@@ -72,16 +74,16 @@ int main(){
         }
     }
 
-    int src = 1;
-    vector<int> dist(n);
+    int src = 1; //our source node
+    vector<int> dist(n); // dist vector to store shortest distance
     for(int i=0;i<n;i++){
-        dist[i] = INT_MAX;
+        dist[i] = INT_MAX; //initialize it with max first
     }
     g.getShortestPath(src,dist,st);
     cout<<"answer is:"<<endl;
 
     for(int i=0;i<dist.size();i++){
-        cout<<dist[i]<<" ";
+        cout<<dist[i]<<" ";   //print it
         
     }cout<<endl;
    
