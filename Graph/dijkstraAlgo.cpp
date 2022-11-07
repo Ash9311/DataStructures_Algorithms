@@ -4,6 +4,7 @@
 #include<set>
 //find adj list of pairs since weight is involved and it is undirected. initialize dist vector, maitain a
 //set of pair of distance from source and node. iterate through the set and process
+//T.C-> O(ElogV)  S.C -> O(N+E)
 vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int source) {
     // Write your code here.
     unordered_map<int,list<pair<int,int>>> adj; //list has pair of neighbour node and weight
