@@ -1,8 +1,10 @@
 //https://www.codingninjas.com/codestudio/problems/frog-jump_3621012?leftPanelTab=1
+//write base condition, define dp array and store the result on it. and check if the result is already present in dp array. use recursively
+//run for 1 step and 2 step jump
 #include<bits/stdc++.h>
 
 int f(int ind, vector<int> &heights,vector<int> &dp){
-    if(ind==0){
+    if(ind==0){ //base case
         return 0;
     }
     if(dp[ind]!=-1){
@@ -12,10 +14,10 @@ int f(int ind, vector<int> &heights,vector<int> &dp){
     int left = f(ind-1,heights,dp) + abs(heights[ind]-heights[ind-1]);
     int right = INT_MAX;
     
-    if(ind>1){
+    if(ind>1){ //or else it will go to negative index
    		 right = f(ind-2,heights,dp) + abs(heights[ind]-heights[ind-2]);
     }
-    return dp[ind]=min(left,right);
+    return dp[ind]=min(left,right); //store the result in dp array
 }
 
 int frogJump(int n, vector<int> &heights)
