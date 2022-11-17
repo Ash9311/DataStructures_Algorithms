@@ -1,4 +1,8 @@
+//https://www.codingninjas.com/codestudio/problems/house-robber_839733?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videos&leftPanelTab=0
 #include <bits/stdc++.h> 
+
+//there are 2 cases. one is excluding first index and other is excluding last index. so check both and return the max one
+
 //same logic as maximumNonAdjacentSum question
 long long int maximumNonAdjacentSum(vector<long long int> &nums){
      long long int n =nums.size();
@@ -16,7 +20,7 @@ long long int maximumNonAdjacentSum(vector<long long int> &nums){
     }
     return prev;
 }
-//there are 2 cases. one is excluding first index and other is excluding last index. so check both and return the max one
+
 long long int houseRobber(vector<int>& valueInHouse)
 {
     long long int n = valueInHouse.size();
