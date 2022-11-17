@@ -42,7 +42,7 @@ int maximumNonAdjacentSum(vector<int> &nums){
 }
 
 
-//space optimization
+//space optimization  T.C -> O(N)  S.C -> O(1)
 int maximumNonAdjacentSum(vector<int> &nums){
  	int n =nums.size();
     int prev = nums[0];
