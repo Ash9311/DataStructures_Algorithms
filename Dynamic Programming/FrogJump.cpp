@@ -50,3 +50,28 @@ int frogJump(int n, vector<int> &heights)
     }
     return prev;
 }
+
+
+// k jump case
+
+int frog_k_dp_opt(int n,vector<int> &arr,int k){
+    
+    vector<int> dp(k+1,0);
+    
+    
+    for(int i=1;i<n;i++){
+        int min_energy= INT_MAX;
+        for(int j=1;j<=k && i>=j;j++){
+            int jump = dp[j]+ abs(arr[i]-arr[i-j]);
+            
+            min_energy= min(jump,min_energy);
+            for(int x=1;x<k;x++){
+                dp[x]=dp[x+1];
+            }
+            
+        }
+        dp[k]=min_energy;
+        
+    }
+    return dp[k];
+}
