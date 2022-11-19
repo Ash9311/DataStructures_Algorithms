@@ -29,3 +29,54 @@ int ninjaTraining(int n, vector<vector<int>> &points)
     vector<vector<int>> dp(n,vector<int>(4,-1)); //declare 2d vector of size 4 bcz for last day which is 3rd v must pass something
     return f(n-1,3,points,dp); //so we passed 3, there is no task as such since task are 0,1,2. since this is our first iteration we are not filtering any
 }
+
+
+-----------
+    //tabulation T.C->O(N*4*3) S.C->O(N*4)
+int ninjaTraining(int n, vector<vector<int>> &points)
+{
+    vector<vector<int>> dp(n,vector<int>(4,-1));
+    //base condition as per bottom-up approach
+    dp[0][0] = max(points[0][1],points[0][2]);
+    dp[0][1] = max(points[0][0],points[0][2]);
+    dp[0][2] = max(points[0][0],points[0][1]);
+    dp[0][3] = max(points[0][0],max(points[0][1],points[0][2]));
+    
+    for(int day=1;day<n;day++){ //iterate through all the days
+        for(int last=0;last<4;last++){ //iterate through all the lasts that u can have per day
+            dp[day][last]=0;
+            for(int task=0;task<3;task++){ //iterate through each tasks that can be performed based on condition and make a note of max
+                if(task!=last){
+                    int point = points[day][task] + dp[day-1][task]; //recurrence that we had used earlier would have been already computed in this bottom up approach.
+                    dp[day][last] = max(dp[day][last],point);
+                }
+            }
+        }
+    }
+    return dp[n-1][3];
+}
+
+//space optimization  T.C->O(N*4*3) S.C->O(4)
+int ninjaTraining(int n, vector<vector<int>> &points)
+{
+    vector<int> prev(4,0);
+    //base condition as per bottom-up approach
+    prev[0] = max(points[0][1],points[0][2]);
+    prev[1] = max(points[0][0],points[0][2]);
+    prev[2] = max(points[0][0],points[0][1]);
+    prev[3] = max(points[0][0],max(points[0][1],points[0][2]));
+    
+    for(int day=1;day<n;day++){
+        vector<int> temp(4,0);
+        for(int last=0;last<4;last++){
+            temp[last] = 0;
+            for(int task=0;task<3;task++){
+                if(task!=last){
+                    temp[last] = max(temp[last],points[day][task] + prev[task]);
+                }
+            }
+        }
+        prev = temp;
+    }
+    return prev[3];
+}
