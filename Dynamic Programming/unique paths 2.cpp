@@ -46,3 +46,27 @@ int mazeObstacles(int n, int m, vector< vector< int> > &mat) {
     }
     return dp[n-1][m-1]%mod;
 }
+
+//space optimization
+int mazeObstacles(int n, int m, vector< vector< int> > &mat) {
+     vector<int> prev(m,0); //prev and current 1D vectors are being used instead of a 2d vector
+    for(int i=0;i<n;i++){
+        vector<int> curr(m,0);
+        for(int j=0;j<m;j++){
+            if(mat[i][j]==-1){ //when valid cell is blocked
+                curr[j] = 0;
+            }
+            else if(i==0 and j==0){
+                curr[j] = 1;
+            }
+            else{
+                int up=0,left=0;
+                if(i>0) up = prev[j];
+                if(j>0) left = curr[j-1];
+                curr[j] = (up + left)%mod;
+            }
+        }
+        prev = curr;
+    }
+    return prev[m-1]%mod;
+}
