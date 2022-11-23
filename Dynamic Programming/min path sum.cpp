@@ -37,10 +37,10 @@ int minPathSum(vector<vector<int>>& grid) {
         int n = grid.size();
         int m = grid[0].size();
         vector<vector<int>> dp(n,vector<int>(m,0));
-       for(int row=0;row<n;row++){
+       for(int row=0;row<n;row++){ //iterate for all indexes
            for(int col=0;col<m;col++){
                if(row==0 && col==0){
-                   dp[row][col] = grid[row][col];
+                   dp[row][col] = grid[row][col]; //store recurrence
                }
                else{
                int up = grid[row][col];
@@ -62,4 +62,39 @@ int minPathSum(vector<vector<int>>& grid) {
            }
        }
         return dp[n-1][m-1];
+    }
+
+//space optimization
+ int minPathSum(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
+        vector<int> prev(m,0);
+        vector<vector<int>> dp(n,vector<int>(m,0));
+       for(int row=0;row<n;row++){
+           vector<int> curr(m,0);
+           for(int col=0;col<m;col++){
+               if(row==0 && col==0){
+                   curr[col] = grid[row][col];
+               }
+               else{
+               int up = grid[row][col];
+               if(row>0){
+                   up += prev[col];
+               }
+               else{
+                   up += 1e9;
+               }
+               int left = grid[row][col];
+               if(col>0){
+                   left+=curr[col-1];
+               }
+               else{
+                   left += 1e9;
+               }
+               curr[col]= min(up,left);
+               }
+           }
+           prev = curr;
+       }
+        return prev[m-1];
     }
