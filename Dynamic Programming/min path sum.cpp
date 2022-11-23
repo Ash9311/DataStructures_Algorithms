@@ -31,3 +31,35 @@ public:
         return solve(n-1,m-1,grid,dp);
     }
 };
+
+//tabulation
+int minPathSum(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
+        vector<vector<int>> dp(n,vector<int>(m,0));
+       for(int row=0;row<n;row++){
+           for(int col=0;col<m;col++){
+               if(row==0 && col==0){
+                   dp[row][col] = grid[row][col];
+               }
+               else{
+               int up = grid[row][col];
+               if(row>0){
+                   up += dp[row-1][col];
+               }
+               else{
+                   up += 1e9;
+               }
+               int left = grid[row][col];
+               if(col>0){
+                   left+=dp[row][col-1];
+               }
+               else{
+                   left += 1e9;
+               }
+               dp[row][col] = min(up,left);
+               }
+           }
+       }
+        return dp[n-1][m-1];
+    }
