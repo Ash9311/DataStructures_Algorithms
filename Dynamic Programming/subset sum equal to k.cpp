@@ -44,3 +44,24 @@ bool subsetSumToK(int n, int k, vector<int> &arr) {
     }
     return dp[n-1][k];
 }
+
+
+//space optimization
+
+bool subsetSumToK(int n, int k, vector<int> &arr) {
+   vector<bool> prev(k+1,0), curr(k+1,0);
+    prev[0]= curr[0] = true;
+    prev[arr[0]] = true; //case when target== arr[0] on 0th index
+    for(int i=1;i<n;i++){
+        for(int target=1;target<=k;target++){
+             bool notTake = prev[target]; //we have an option of taking or not taking it
+    bool take = false;
+    if(target>=arr[i]){ //we can take only if target it greater or equal to index element
+        take = prev[target-arr[i]];
+    }
+     curr[target]=take || notTake;
+        }
+        prev = curr;
+    }
+    return prev[k];
+}
