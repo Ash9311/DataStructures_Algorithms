@@ -27,7 +27,7 @@ bool subsetSumToK(int n, int k, vector<int> &arr) {
 
 
 
-//tabulation
+//tabulation T.C -> O(n*k)
 bool subsetSumToK(int n, int k, vector<int> &arr) {
     vector<vector<bool>> dp(n,vector<bool>(k+1,0));
    for(int i=0;i<n;i++) dp[i][0]= true;
@@ -46,7 +46,7 @@ bool subsetSumToK(int n, int k, vector<int> &arr) {
 }
 
 
-//space optimization
+//space optimization T.C -> O(n*k), S.C->O(k)
 
 bool subsetSumToK(int n, int k, vector<int> &arr) {
    vector<bool> prev(k+1,0), curr(k+1,0);
