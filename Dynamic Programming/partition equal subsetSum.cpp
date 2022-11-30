@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/partition-equal-subset-sum/
 //since we have to divide array into exactly 2 parts. if array is having odd num of elements then its not possible. so our target sum is
 //sumofAllelements/2 if we find this then the reamainig elements in array will sum to other half.
 
