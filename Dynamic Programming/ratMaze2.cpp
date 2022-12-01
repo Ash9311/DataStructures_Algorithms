@@ -1,5 +1,6 @@
 //https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1#
 
+
 //use a recursive approach to traverse through all the paths without obstacles and maintain the string change(it is being passed by value)
 
 class Solution{
