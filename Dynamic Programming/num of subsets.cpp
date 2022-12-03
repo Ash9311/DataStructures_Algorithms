@@ -3,12 +3,11 @@
 #include <bits/stdc++.h> 
 //T.C->O(n*sum) S.C->O(n*sum)+O(n)
   int solve(vector<int>& nums, int target,int i,vector<vector<int>> &dp){
-        if(target==0){ //target match found
-            return 1;
-        }
-        if(i==0){ // if we are on the last index then that num is the deciding factor
-            return target==nums[i];
-        }
+       if(i==0){
+           if(target==0 && nums[0]==0) return 2; //since there are 2 possibilities considering or not considering 0
+           if(target==0 || target==nums[0]) return 1;
+           return 0;
+      }
       if(dp[i][target]!=-1){
           return dp[i][target];
       }
