@@ -26,3 +26,42 @@ int findWays(vector<int> &num, int tar)
     vector<vector<int>> dp(n,vector<int>(tar+1,-1));
     return solve(num,tar,n-1,dp);
 }
+
+
+//tabulation
+int findWays(vector<int> &num, int tar)
+{
+   int n = num.size(); 
+    vector<vector<int>> dp(n,vector<int>(tar+1,0));
+    for(int i=0;i<n;i++) dp[i][0]=1;
+    if(num[0] <=tar) dp[0][num[0]]=1;
+    for(int ind=1;ind<n;ind++){
+        for(int sum=0;sum<=tar;sum++){
+            int notPick = dp[ind-1][sum];
+            int pick = 0;
+            if(num[ind]<=sum) pick = dp[ind-1][sum-num[ind]];
+            dp[ind][sum] = notPick + pick;
+        }
+    }
+    return dp[n-1][tar];
+}
+
+
+//space optimization
+int findWays(vector<int> &num, int tar)
+{
+   int n = num.size(); 
+    vector<int> prev(tar+1,0), curr(tar+1,0);
+    prev[0] = curr[0] = 1;
+    if(num[0] <=tar) prev[num[0]]=1;
+    for(int ind=1;ind<n;ind++){
+        for(int sum=0;sum<=tar;sum++){
+            int notPick = prev[sum];
+            int pick = 0;
+            if(num[ind]<=sum) pick = prev[sum-num[ind]];
+            curr[sum] = notPick + pick;
+        }
+        prev = curr;
+    }
+    return prev[tar];
+}
