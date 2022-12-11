@@ -1,3 +1,4 @@
+//https://www.codingninjas.com/codestudio/problems/unbounded-knapsack_1215029?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videos&leftPanelTab=1
 //recursive traverse through all the indexes but this problem is quiet different here since we can pick the same coin multiple times
 //we can stay on the same index after we pick .we wont be stuck there since target reduces as we pick . so recursion will go too deeply
 //it finds all the combinations
