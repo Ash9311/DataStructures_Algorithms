@@ -3,8 +3,8 @@
 //we can stay on the same index after we pick .we wont be stuck there since target reduces as we pick . so recursion will go too deeply
 //it finds all the combinations
 
-//T.C -> O(n*amount) S.C->O(n*amount) + O(amount) (recursion aux space is huge coz v stay on same index. )
-//witout memoization - >T.C -> much greater than(O(2^n)) S.C->O(target)
+//T.C -> O(n*w) S.C->O(n*w) + O(w) (recursion aux space is huge coz v stay on same index. )
+//witout memoization - >T.C -> much greater than(O(2^n)) S.C->O(w)
 #include <bits/stdc++.h> 
 
 int solve(int i,int w,vector<int> &profit, vector<int> &weight,vector<vector<int>> &dp){
