@@ -2,6 +2,8 @@
 // function to find longest common subsequence
 //start with last indexes of both strings.recursively explore all indexes. if string index is a match move both indexes 1 step back.
 //if string isnt a match then split it into two cases. where index of 1 string is not moved and other is moved. and return the max of those
+// without memoization TC-O(2^n * 2^m)
+//TC-O(n*m) SC-O(n*m)+O(n+m)
 class Solution
 {
     public:
