@@ -1,6 +1,7 @@
 //https://leetcode.com/problems/number-of-provinces/description/
 //create adjacency list. traverse through all vertices and call dfs on them also track visited. from visited we get to know the count of
 //unconnected cities
+//SC - > O(N) + O(N)   TC->O(N) + O(V+2E)
 class Solution {
 
 private:
