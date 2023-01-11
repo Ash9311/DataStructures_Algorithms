@@ -1,7 +1,9 @@
+
 //https://practice.geeksforgeeks.org/problems/flood-fill-algorithm1856/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=flood-fill-algorithm
 
 //prepare del array to track neighbours and perform dfs starting from starting pixel. and then do it for its neighbours.
 //change the color on 'ans' vector
+//TC - O(n*m) SC - O(n*m) + O(n*m)
 class Solution {
     
 private:
