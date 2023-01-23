@@ -1,6 +1,7 @@
 //https://www.codingninjas.com/codestudio/problems/detect-cycle-in-a-directed-graph_1062626?leftPanelTab=1&utm_source=youtube&utm_medium=affiliate&utm_campaign=Lovebabbar
 //create adj list. iterate through each node recursively with dfs. maitain a visited and dfsVisited map
 //cycle is said to be detected in directed graph when visited and dfsVisited is true
+//TC - O(V+E),  SC - O(2N)
 #include<unordered_map>
 #include<list>
 bool checkCycleDFS(int node,unordered_map<int,bool> &visited,unordered_map<int,bool> &dfsVisited,unordered_map<int,list<int>> &adj){
@@ -18,7 +19,7 @@ bool checkCycleDFS(int node,unordered_map<int,bool> &visited,unordered_map<int,b
             return true;
         }
     }
-    dfsVisited[node] = false; //backtrack dfsVisited
+    dfsVisited[node] = false; //backtrack dfsVisited, through DFS visited we get to know the current path. once done we backtrack it
     return false;
 }
 
