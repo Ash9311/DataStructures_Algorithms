@@ -1,3 +1,58 @@
+
+
+//apply DFS starting from 0. mark as visited check for neighbours ,push it to the stack after cheking for neighbours.
+//once all are traversed. return all the elements populated in stack
+//TC - O(V+E) same as dfs for directed graphs
+//topological sorting is a method of sorting where if you pickup an element frm a stack. u get to know that DFS
+//has been done for that
+class Solution
+{
+    
+    private:
+    void DFS(int node,vector<int> adj[],int vis[],stack<int> &st){
+        vis[node] = 1;
+        
+        for(auto it: adj[node]){ //check for neighbours
+            if(!vis[it]){
+                DFS(it,adj,vis,st);
+            }
+            
+        }
+        st.push(node); //push it to the stack after cheking for its neighbours
+    }
+    
+	public:
+	//Function to return list containing vertices in Topological order. 
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    int vis[V] = {0};
+	    stack<int> st;
+	    for(int i=0;i<V;i++){
+	        if(!vis[i]){
+	            DFS(i,adj,vis,st);
+	        }
+	    }
+	    
+	    vector<int> ans;
+	    while(!st.empty()){
+	        ans.push_back(st.top());
+	        st.pop();
+	    }
+	    return ans;
+	}
+};
+
+
+
+
+
+
+
+
+----------------------------
+
+
+
 //https://www.codingninjas.com/codestudio/problems/topological-sort_982938?topList=love-babbar-dsa-sheet-problems&leftPanelTab=1&utm_source=youtube&utm_medium=affiliate&utm_campaign=Lovebabbar
 #include <bits/stdc++.h> 
 #include<unordered_map>
