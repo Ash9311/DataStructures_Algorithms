@@ -43,6 +43,54 @@ class Solution
 };
 
 
+//Kahn's algo
+
+/Method-2 Kahn's algo
+//Take indegree of all nodes. and push those nodes into the queue whose indegree is 0. pop out nodes from queue
+//push it to out resultant
+//and subtract their outdegree. from their neighbours and if their neighbours indegree becomes 0 then push those
+//neighbours also into the queue.
+class Solution
+{
+    
+  
+    
+	public:
+	//Function to return list containing vertices in Topological order. 
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    int indegree[V] = {0};
+      for(int i=0;i<V;i++){
+          for(auto it: adj[i]){ //take out indegrees
+              indegree[it]++;
+          }
+      }
+      
+      queue<int> q;
+      for(int i=0;i<V;i++){
+          if(indegree[i]==0){   //push those nodes into the queue whose indegree is 0
+              q.push(i);
+          }
+      }
+      
+      vector<int> topo;
+      
+      //O(V+E)
+      while(!q.empty()){ //process nodes with indegree 0
+          int node = q.front();
+          q.pop();
+          topo.push_back(node);
+          
+          for(auto it: adj[node]){
+              indegree[it]--;  //subtract the indegree of curr node from its neighbours
+              if(indegree[it]==0){
+                  q.push(it);
+              }
+          }
+      }
+      return topo;
+	}
+};
 
 
 
