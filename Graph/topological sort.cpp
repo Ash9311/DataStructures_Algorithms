@@ -45,7 +45,7 @@ class Solution
 
 //Kahn's algo
 
-/Method-2 Kahn's algo
+//Method-2 Kahn's algo
 //Take indegree of all nodes. and push those nodes into the queue whose indegree is 0. pop out nodes from queue
 //push it to out resultant
 //and subtract their outdegree. from their neighbours and if their neighbours indegree becomes 0 then push those
