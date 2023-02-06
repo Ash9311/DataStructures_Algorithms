@@ -1,3 +1,71 @@
+//https://practice.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=direct-acyclic-graph
+
+//find topo sort. then create shortest dist vector with infinite distance initially. process stack containing toposort
+//to find shortest distance
+//tc sam as DFS
+class Solution {
+  public:
+  
+    void topoSort(int node,vector<pair<int,int>> adj[], int vis[], stack<int> &st){
+        vis[node] = 1;
+        for(auto neighbour: adj[node]){
+            int v = neighbour.first;
+            if(!vis[v]){
+            topoSort(v,adj,vis,st);
+            }
+        }
+        st.push(node);
+    }
+  
+     vector<int> shortestPath(int N,int M, vector<vector<int>>& edges){
+        // code here
+        vector<pair<int,int>> adj[N];
+        for(int i=0;i<M;i++){
+            int u = edges[i][0];
+            int v = edges[i][1];
+            int wt = edges[i][2];
+            adj[u].push_back({v,wt});
+        }
+        
+        //find the topo sort
+        int vis[N] = {0};
+        stack<int> st;
+        for(int i=0;i<N;i++){
+            if(!vis[i]){
+                topoSort(i,adj,vis,st);
+            }
+        }
+        
+        //do the distance thing
+        vector<int> dist(N);
+        for(int i=0;i<N;i++){
+            dist[i] = 1e9;
+        }
+        dist[0] = 0;
+        //O(N+M)
+        while(!st.empty()){
+            int node = st.top();
+            st.pop();
+            
+            for(auto it: adj[node]){
+                int v = it.first;
+                int wt = it.second;
+              //  cout<<dist[node]+wt<<" "<<dist[v]<<endl;
+                if(dist[node] + wt <dist[v]){
+                    dist[v] = dist[node] + wt;
+                }
+            }
+        }
+        for(int i=0;i<dist.size();i++){ //if any node is impossible to reach make it -1
+            if(dist[i]==1000000000){
+                dist[i] = -1;
+            }
+        }
+        return dist;
+    }
+};
+----------------------------
+
 #include <bits/stdc++.h>
 #include<iostream>
 #include<list>
