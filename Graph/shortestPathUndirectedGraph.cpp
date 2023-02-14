@@ -1,3 +1,46 @@
+//https://practice.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=shortest-path-in-undirected-graph-having-unit-distance         
+// User function Template for C++
+//create adj list. initialize dist and src. push src to the queue and apply bfs on the queue. track the shortest distance
+//TC same as BFS O(V+2E)
+class Solution {
+  public:
+    vector<int> shortestPath(vector<vector<int>>& edges, int N,int M, int src){
+        // code here
+        vector<int> adj[N];
+        
+        for(auto it: edges){
+            adj[it[0]].push_back(it[1]); //its undirected graph
+            adj[it[1]].push_back(it[0]);
+        }
+        
+        int dist[N];
+        for(int i=0;i<N;i++){
+            dist[i] = 1e9; //initialize dist as infinite first
+        }
+        dist[src] = 0; //initialize source
+        queue<int> q;
+        q.push(src);
+        while(!q.empty()){
+            int node = q.front();
+            q.pop();
+            for(auto neighbour: adj[node]){
+                if(dist[node] +1<dist[neighbour]){
+                    dist[neighbour] = dist[node]+1;
+                    q.push(neighbour);
+                }
+            }
+        }
+        vector<int> ans(N,-1);
+        for(int i=0;i<N;i++){
+            if(dist[i]!=1e9){
+                ans[i] = dist[i];
+            }
+        }
+        return ans;
+    }
+};
+---------------------------------
+
 //https://www.codingninjas.com/codestudio/problems/shortest-path-in-an-unweighted-graph_981297?leftPanelTab=0&utm_source=youtube&utm_medium=affiliate&utm_campaign=Lovebabbar
 
 #include<unordered_map>
