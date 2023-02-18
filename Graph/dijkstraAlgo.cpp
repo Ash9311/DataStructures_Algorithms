@@ -1,3 +1,42 @@
+//https://practice.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=implementing-dijkstra-set-1-adjacency-matrix
+
+//declare a priority queue. initialize dist as infinite. push the source which will be at dist 0. process
+//all elements of PQ
+class Solution
+{
+	public:
+	//Function to find the shortest distance of all the vertices
+    //from the source vertex S.
+    vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
+    {
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
+        vector<int> dist(V);
+        for(int i=0;i<V;i++){
+            dist[i] = 1e9;
+        }
+        dist[S]=0;
+        pq.push({0,S});
+        
+        while(!pq.empty()){
+            int dis = pq.top().first;
+            int node = pq.top().second;
+            pq.pop();
+            
+            for(auto it: adj[node]){
+               int edgeWeight = it[1];
+               int adjNode = it[0];
+               
+               if(dis + edgeWeight < dist[adjNode]){ //if new dist is lesser than old then update
+                   dist[adjNode] = dis + edgeWeight;
+                    pq.push({dist[adjNode],adjNode}); //push it tp the queue if its added
+               }
+            }
+           
+        }
+        return dist;
+    }
+};
+
 //https://www.codingninjas.com/codestudio/problems/dijkstra-s-shortest-path_920469?leftPanelTab=0&utm_source=youtube&utm_medium=affiliate&utm_campaign=Lovebabbar
 #include <bits/stdc++.h> 
 #include<unordered_map>
