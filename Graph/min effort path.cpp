@@ -16,7 +16,8 @@ class Solution {
         
         int dr[] = {-1,0,1,0};
         int dc[] = {0,1,0,-1};
-        
+        //E log V
+        // n*m*4*log(n*m)
         while(!pq.empty()){
             auto it = pq.top();
             pq.pop();
