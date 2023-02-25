@@ -6,6 +6,7 @@ class Solution:
             return 0
         flag=0
         
+        
         if(x<0):    
             x=abs(x)
             flag=1
