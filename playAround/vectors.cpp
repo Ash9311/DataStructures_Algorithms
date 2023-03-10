@@ -17,7 +17,15 @@ int main(){
   if (std::find(v.begin(), v.end(),3)!=v.end()) { // it's not possible now, but how?
     std::cout << "yo" << std::endl;
   }
-    
+    async fetchUsers() {
+  try {
+    const response = await fetch('https://randomuser.me/api/?results=5');
+    const data = await response.json();
+    console.log(data.results);
+  } catch (error) {
+    console.error(error);
+  }
+}
     
     return 0;
 }
