@@ -10,7 +10,6 @@ int main(){
     for(auto it : v){
         cout<<it;
     }
-    
    // check whether element present  in  a vector
     v = {2,3,4};
 
