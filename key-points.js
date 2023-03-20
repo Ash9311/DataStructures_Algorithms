@@ -57,3 +57,5 @@ In this example, we have a JSON object with an array of users. We use the filter
 ]
 
 data.users.filter(user => user.hobbies.includes("gaming"));  //user whose hobbies include gaming
+
+let productId = this.route.snapshot.paramMap.get('id');
