@@ -54,6 +54,7 @@ In this example, we have a JSON object with an array of users. We use the filter
     "name": "Bob",
     "hobbies": ["cooking"]
   }
+ 
 ]
 
 data.users.filter(user => user.hobbies.includes("gaming"));  //user whose hobbies include gaming
