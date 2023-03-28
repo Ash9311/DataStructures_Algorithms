@@ -79,3 +79,15 @@ const data = [
 data.sort((a, b) => a.StoryPoints - b.StoryPoints);
 
 console.log(data);
+
+
+async fetchUsers() {
+  try {
+    const response = await fetch('https://randomuser.me/api/?results=5');
+    const data = await response.json();
+    console.log(data.results);
+  } catch (error) {
+    console.error(error);
+  }
+}
+A function along with reference to its outer environment together forms a closure. Or in other words, A Closure is a combination of a function and its lexical scope bundled together. eg:
