@@ -91,3 +91,6 @@ async fetchUsers() {
   }
 }
 A function along with reference to its outer environment together forms a closure. Or in other words, A Closure is a combination of a function and its lexical scope bundled together. eg:
+
+result.erase(std::unique(result.begin(), result.end()), result.end());
+filters duplicate vectors in 2D vector
