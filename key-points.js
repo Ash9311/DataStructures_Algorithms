@@ -80,7 +80,6 @@ data.sort((a, b) => a.StoryPoints - b.StoryPoints);
 
 console.log(data);
 
-
 async fetchUsers() {
   try {
     const response = await fetch('https://randomuser.me/api/?results=5');
