@@ -31,3 +31,40 @@ int intersectPoint(Node* head1, Node* head2)
    
     return -1;
 }
+
+
+
+---------
+  /**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+  //maintain a map of listNode and bool and traverse through 1 listNode and mark visited as true. and while traversing second ListNode check if that
+  //listNode is already visited
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        unordered_map<ListNode*,bool> mp;
+
+        ListNode *tempA = headA;
+        ListNode *tempB = headB;
+        while(tempA!=NULL){
+            mp[tempA] = true;
+            tempA = tempA->next;
+        }
+
+           while(tempB!=NULL){
+            if(mp[tempB]){  //already visited check
+                return tempB;
+            }
+            mp[tempB] = true;
+            tempB = tempB->next;
+        }
+
+        return NULL;
+    }
+};
