@@ -24,3 +24,6 @@ public:
         return ans;
     }
 };
+
+Time Complexity: O(N3*log(M)), where N = size of the array, M = no. of elements in the set.
+    Space Complexity: O(2 * no. of the quadruplets)+O(N)
