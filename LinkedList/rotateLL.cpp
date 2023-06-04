@@ -45,8 +45,8 @@ public:
         length++;
     }
 
-    curr->next = head;  // Connect the last node with the head to form a circular linked list ,for temporary advantage
-
+    curr->next = head;  // Connect the last node with the head to form a circular linked list
+ //basically we are changing the head and end point so that the linked list appears shifted
     k = k % length;
     int rotations = length - k;
 
@@ -56,7 +56,7 @@ public:
     }
 
     head = curr->next;
-    curr->next = nullptr;  // Set the new end of the linked list, break the circular LL which has been set
+    curr->next = nullptr;  // Set the new end of the linked list
 
     return head;
 }
