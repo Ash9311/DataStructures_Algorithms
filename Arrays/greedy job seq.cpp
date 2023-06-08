@@ -29,8 +29,8 @@ class Solution
          int countJobs = 0;
          int jobProfit = 0;
          for(int i=0;i<n;i++){
-             for(int j=arr[i].dead;j>0;j--){
-             if(slot[j]==-1){
+             for(int j=arr[i].dead;j>0;j--){ //check if there is a slot available for the deadline and its earlier date
+             if(slot[j]==-1){   //once slot found break out. and move the iteration
                  slot[j]=i;
                  countJobs++;
                  jobProfit+=arr[i].profit;
