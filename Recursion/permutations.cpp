@@ -27,3 +27,27 @@ public:
         return res;
     }
 };
+
+-----------------------------------
+    
+class Solution {
+public:
+vector<vector<int>> ans;
+void permutation(int ind,vector<int> nums){
+  if(ind==nums.size()-1){ //once ind reaches end then v r done
+    ans.push_back(nums);
+    return;
+  }
+  for(int i=ind;i<nums.size();i++){ //swap starting from current index to generate all combinations
+      swap(nums[i],nums[ind]);
+      permutation(ind+1,nums);
+      swap(nums[i],nums[ind]); //backtrack
+  }
+}
+    
+    vector<vector<int>> permute(vector<int>& nums) {
+        int n = nums.size();
+        permutation(0,nums);
+        return ans;
+    }
+};
