@@ -1,5 +1,5 @@
 //https://leetcode.com/problems/palindrome-partitioning/solutions/3829042/detailed-explaination-python-solution-beats-100-not-clickbait/
-//        aab
+//                     aab
 //       /             |              \
 //      a              aa              aab
 //     / \             |     
@@ -24,7 +24,7 @@ vector<vector<string>> res;
        
        for(int i=ind;i<n;i++){
            if(isPalindrome(s,ind,i)){ //push to ds only if its a palindrome
-               ds.push_back(s.substr(ind,i+1-ind));
+               ds.push_back(s.substr(ind,i+1-ind));//store that particular substr palindrome
                
                solve(s,n,ds,i+1);
                ds.pop_back();
