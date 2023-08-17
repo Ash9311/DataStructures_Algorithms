@@ -1,34 +1,48 @@
-//https://leetcode.com/problems/palindrome-partitioning/
+//https://leetcode.com/problems/palindrome-partitioning/solutions/3829042/detailed-explaination-python-solution-beats-100-not-clickbait/
+//        aab
+//       /             |              \
+//      a              aa              aab
+//     / \             |     
+//    a   ab           b         
+//    |
+//    b
 class Solution {
 public:
+vector<vector<string>> res;
     vector<vector<string>> partition(string s) {
-        vector<vector<string>> res;
-        vector<string> path;
-        solve(s,0,res,path);
+        int n = s.length();
+        vector<string> ds;
+        solve(s,n,ds,0);
         return res;
     }
-    
-    void solve(string s,int index,vector<vector<string>> &res,vector<string> &path){
-        if(index==s.size()){
-            res.push_back(path);
+
+    void solve(string s,int n,vector<string> &ds,int ind){
+        if(ind==n){
+            res.push_back(ds);
             return;
         }
-        for(int i=index;i<s.size();i++){
-            if(isPalindrome(s,index,i)){
-                path.push_back(s.substr(index,i-index+1));
-                solve(s,i+1,res,path);
-                path.pop_back();
-                
-            }
-        }
+       
+       for(int i=ind;i<n;i++){
+           if(isPalindrome(s,ind,i)){ //push to ds only if its a palindrome
+               ds.push_back(s.substr(ind,i+1-ind));
+               
+               solve(s,n,ds,i+1);
+               ds.pop_back();
+           }
+       }
+        
     }
-    
-    bool isPalindrome(string s,int start,int end){
-        while(start<end){
-        if(s[start++]!=s[end--]){
-            return false;
-        }
+
+    bool isPalindrome(string str,int l,int r){
+      
+        while(l<=r){
+            if(str[l]!=str[r]){
+                return false;
+            }
+            l++;
+            r--;
         }
         return true;
+
     }
 };
