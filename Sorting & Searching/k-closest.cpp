@@ -30,3 +30,31 @@ public:
      }
 
 };
+
+
+-----------
+ //https://leetcode.com/problems/k-closest-points-to-origin/
+ class Solution {
+public:
+
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+   
+     priority_queue<pair<int,vector<int>>> maxheap; //de
+     for(int i=0;i<points.size();i++){
+          int dist = points[i][0]*points[i][0] + points[i][1]*points[i][1];
+          maxheap.push({dist,points[i]});
+          if(maxheap.size()>k){
+               maxheap.pop();
+          }
+     }
+
+     vector<vector<int>> ans;
+     while(maxheap.size()>0){
+          ans.push_back(maxheap.top().second); //since v need second ie vector parameter of heap
+          maxheap.pop();
+    
+     }
+     return ans;
+    }
+
+};
