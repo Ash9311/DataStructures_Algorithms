@@ -1,3 +1,45 @@
+//https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* prev;
+    Node* next;
+    Node* child;
+};
+*/
+
+class Solution {
+public:
+    Node* flatten(Node* head) {
+        Node* curr = head;
+        while(curr!=NULL){
+            Node* nextNode = curr->next; //save next node in original list
+            if(curr->child!=NULL){
+                Node* childList = flatten(curr->child); //recursive call child
+                curr->next = childList; //to flatten
+                childList->prev = curr;
+                while(childList->next!=NULL){ //traverse through last node of the child
+                    childList= childList->next;
+                }
+                if(nextNode!=NULL){
+                    nextNode->prev=childList; //connect childlist end to nextNode in original list to flatten
+                }
+                childList->next = nextNode;
+                curr->child=NULL; //since we had flattened it . take off the child
+        }
+                curr = nextNode; //move to next
+        }
+        return head;
+    }
+
+
+
+
+
+
+
 //https://www.geeksforgeeks.org/flatten-a-linked-list-with-next-and-child-pointers/
 #include <iostream>
 #include<queue>
