@@ -1,3 +1,62 @@
+
+
+class TrieNode{
+    public:
+    bool isWord;
+    TrieNode *child[26];
+    TrieNode(){
+        isWord = false;
+        for(auto &ch:child){
+            ch = NULL;
+        }
+    }
+};
+
+class Trie {
+    TrieNode* root;
+public:
+    Trie() {
+        root = new TrieNode();
+    }
+    
+    void insert(string word) {
+        TrieNode* curr = root;
+        for(auto &ch: word){
+            int i = ch-'a'; //will get ascii value
+            if(!curr->child[i]) curr->child[i] = new TrieNode(); //create trie if that char not present
+            curr = curr->child[i];
+        }
+        curr->isWord=true;
+    }
+    
+    bool search(string word,bool prefix=false) { //if parameter passed as true then this will b over ridden
+        TrieNode* curr = root;
+        for(auto &ch: word){
+            int i = ch-'a';
+            if(!curr->child[i]) return false;
+            curr = curr->child[i];
+        }
+        if(prefix==false) return curr->isWord;//if searching for exact word. make sure last node is terminated
+        return true;
+    }
+    
+    bool startsWith(string prefix) {
+        return search(prefix,true);
+    }
+};
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * Trie* obj = new Trie();
+ * obj->insert(word);
+ * bool param_2 = obj->search(word);
+ * bool param_3 = obj->startsWith(prefix);
+ */
+
+
+
+----------------
+    
 //https://www.codingninjas.com/codestudio/problems/implement-trie_631356?topList=love-babbar-dsa-sheet-problems&leftPanelTab=1&utm_source=youtube&utm_medium=affiliate&utm_campaign=Lovebabbar
 class TrieNode{
     public:
