@@ -25,3 +25,21 @@ class Solution
         return ans;
     }
 };
+
+--------------------
+    priority_queue<long long> pq;
+        for(int i=0;i<n;i++){ //multiply by -1 to convert max heap to min heap
+            pq.push(-1*arr[i]);
+        }
+        long long ans = 0;
+        while(pq.size()>1){
+            long long first = pq.top();
+            pq.pop();
+            long long sec = pq.top();
+            pq.pop();
+            long long sum=first + sec; //cost of connecting
+            ans=ans+sum; //add the cost to our ans
+            pq.push(sum); //push the new rope to pq. order can change since the added rope might be greater than other indivisual
+            
+        }
+        return ans*-1;
