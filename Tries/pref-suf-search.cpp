@@ -1,8 +1,9 @@
-You just need basic trie operations (search, insert) to solve this question.
-Using trie you can easily tell whether a word of given prefix is available or not (same with suffix, by making a reverse trie). So the first issue which arises is that you need to check for both suffix prefix of a same word because you can't just independently search the two tries as that may give wrong results.
-So to curb this, since the length of each word is not more that 10, I created all possible suffixes of that word and appended them ahead the word, separated by '#". Like for apple: e#apple, le#apple,......apple#apple.
-Now when a search query comes up, I will just concatenate the suffix with prefix separated by a '#' and then simply search the trie. E.g. If it was "ap" and "e" then just search for "e#ap".
-To get the most recent word (with largest index) out of many possible options, I am maintaining an idx variable for each node, which will get updated if a newer word arrives in that path so that we return the most recent word.
+//https://leetcode.com/problems/prefix-and-suffix-search/description/
+// You just need basic trie operations (search, insert) to solve this question.
+// Using trie you can easily tell whether a word of given prefix is available or not (same with suffix, by making a reverse trie). So the first issue which arises is that you need to check for both suffix prefix of a same word because you can't just independently search the two tries as that may give wrong results.
+// So to curb this, since the length of each word is not more that 10, I created all possible suffixes of that word and appended them ahead the word, separated by '#". Like for apple: e#apple, le#apple,......apple#apple.
+// Now when a search query comes up, I will just concatenate the suffix with prefix separated by a '#' and then simply search the trie. E.g. If it was "ap" and "e" then just search for "e#ap".
+// To get the most recent word (with largest index) out of many possible options, I am maintaining an idx variable for each node, which will get updated if a newer word arrives in that path so that we return the most recent word.
 
 class TrieNode{
     public:
