@@ -1,3 +1,33 @@
+//https://leetcode.com/problems/frog-jump/
+class Solution {
+public:
+        unordered_map<int,int> mp;
+        unordered_map<int,map<int,bool>>dp;
+    bool canCross(vector<int>& stones) {
+        int n = stones.size();
+        int k = 1;
+        for(int i=0;i<n;i++){
+            mp[stones[i]]++; //store it in a map it would be essential later to see if curr index has stone
+        }
+        
+        return solve(stones[0],stones[n-1],0);
+    }
+
+    bool solve(int curr,int dest,int k){
+        if(curr==dest) return 1;
+        if(!mp[curr]) return 0; //no stone return 0
+        if(dp[curr].find(k)!=dp[curr].end()) return dp[curr][k];
+        //there are 3 possible jums ie k-1,k,k+1
+        bool first = k>1 && solve(curr+k-1,dest,k-1);
+        bool second = k>0 && solve(curr+k,dest,k);
+        bool third = solve(curr+k+1,dest,k+1); //for 0th idx it goes here
+
+        return dp[curr][k]=first||second||third;
+    }
+};
+
+----------------------
+    
 //https://www.codingninjas.com/codestudio/problems/frog-jump_3621012?leftPanelTab=1
 //write base condition, define dp array and store the result on it. and check if the result is already present in dp array. use recursively
 //run for 1 step and 2 step jump
